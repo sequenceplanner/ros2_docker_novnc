@@ -1,11 +1,9 @@
-FROM osrf/ros:rolling-desktop
+FROM ros:rolling-ros-base-focal
 
-ARG UBUNTU=focal
-ARG ROS_DISTRO=foxy
-
-
-RUN apt-get update -qqy \
+RUN DEBIAN_FRONTEND=noninteractive apt-get update -qqy \
+ && DEBIAN_FRONTEND=noninteractive apt-get upgrade -qqy \
  && DEBIAN_FRONTEND=noninteractive apt-get install -qqy \
+    ros-rolling-desktop \
     emacs \
     git \
     imagemagick \
@@ -30,6 +28,8 @@ RUN apt-get update -qqy \
 
 ENV PATH="/root/.cargo/bin:${PATH}"
 
-RUN mkdir /root/bin
-ADD entrypoint.sh /
+ADD assets /root/ && entrypoint.sh /
+# RUN tar -xvf /root/nebula-linux-amd64.tar
+
+RUN mkdir /root/bin && chmod +x entrypoint.sh 
 CMD /entrypoint.sh

@@ -31,5 +31,6 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 # ADD assets /root/ && entrypoint.sh /
 # RUN tar -xvf /root/nebula-linux-amd64.tar
 
-RUN mkdir /root/bin && chmod +x entrypoint.sh 
+COPY entrypoint.sh /
+# RUN mkdir /root/bin && chmod +x entrypoint.sh 
 CMD /entrypoint.sh

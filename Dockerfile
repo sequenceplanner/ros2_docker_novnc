@@ -28,7 +28,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update -qqy \
 
 ENV PATH="/root/.cargo/bin:${PATH}"
 
-ADD assets /root/ && entrypoint.sh /
+# ADD assets /root/ && entrypoint.sh /
 # RUN tar -xvf /root/nebula-linux-amd64.tar
 
 RUN mkdir /root/bin && chmod +x entrypoint.sh 

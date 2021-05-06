@@ -32,5 +32,5 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 # RUN tar -xvf /root/nebula-linux-amd64.tar
 
 COPY entrypoint.sh /
-# RUN mkdir /root/bin && chmod +x entrypoint.sh 
+RUN chmod +x entrypoint.sh 
 CMD /entrypoint.sh
